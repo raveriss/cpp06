@@ -6,7 +6,7 @@
 #    By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/14 10:21:16 by raveriss          #+#    #+#              #
-#    Updated: 2024/05/23 21:47:40 by raveriss         ###   ########.fr        #
+#    Updated: 2024/05/24 14:18:43 by raveriss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ INC_DIR = incs
 
 # Compiler and flags
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -I$(INC_DIR)
+CXXFLAGS = -Wall -Wextra -Werror -Wconversion -std=c++98 -MMD -I$(INC_DIR)
 
 # Source files and objects
 SRCS = $(wildcard $(SRC_DIR)/*.cpp)
