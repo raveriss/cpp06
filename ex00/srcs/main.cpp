@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 14:00:00 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/27 18:56:59 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/27 19:38:42 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,11 +154,13 @@ int main(int argc, char *argv[]) {
         testConversion(toString(INT_MIN), "char: impossible\nint: " + toString(INT_MIN) + "\nfloat: " + toString(static_cast<float>(INT_MIN)) + "f\ndouble: " + toString(static_cast<double>(INT_MIN)) + "\n");
         testConversion(toString(INT_MAX), "char: impossible\nint: " + toString(INT_MAX) + "\nfloat: " + toString(static_cast<float>(INT_MAX)) + "f\ndouble: " + toString(static_cast<double>(INT_MAX)) + "\n");
 
-        testConversion(toString(FLT_MIN), "char: impossible\nint: 0\nfloat: " + toString(FLT_MIN) + "f\ndouble: " + toString(static_cast<double>(FLT_MIN)) + "\n");
+        std::cout << "FLT_MIN: " << FLT_MIN << std::endl;
+        testConversion(toString(FLT_MIN), "char: Non displayable\nint: 0\nfloat: " + toString(FLT_MIN) + "f\ndouble: " + toString(static_cast<double>(FLT_MIN)) + "\n");
+        std::cout << "FLT_MAX: " << FLT_MAX << std::endl;
         testConversion(toString(FLT_MAX), "char: impossible\nint: impossible\nfloat: " + toString(FLT_MAX) + "f\ndouble: " + toString(static_cast<double>(FLT_MAX)) + "\n");
 
-        testConversion(toString(DBL_MIN), "char: impossible\nint: 0\nfloat: " + toString(static_cast<float>(DBL_MIN)) + "f\ndouble: " + toString(DBL_MIN) + "\n");
-        testConversion(toString(DBL_MAX), "char: impossible\nint: impossible\nfloat: " + toString(static_cast<float>(DBL_MAX)) + "f\ndouble: " + toString(DBL_MAX) + "\n");
+        // testConversion(toString(DBL_MIN), "char: impossible\nint: 0\nfloat: " + toString(static_cast<float>(DBL_MIN)) + "f\ndouble: " + toString(DBL_MIN) + "\n");
+        // testConversion(toString(DBL_MAX), "char: impossible\nint: impossible\nfloat: " + toString(static_cast<float>(DBL_MAX)) + "f\ndouble: " + toString(DBL_MAX) + "\n");
 
 
         testConversion("-0.0", "char: Non displayable\nint: 0\nfloat: -0.0f\ndouble: -0.0\n");

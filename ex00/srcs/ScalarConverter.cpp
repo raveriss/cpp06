@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:19:30 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/27 18:46:46 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/27 20:02:39 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@
 /* Inclusion de la bibliothèque standard pour manipuler la sortie formatée */
 #include <iomanip>
 
+
+#include <stdio.h>
 /**
  * @brief Construct a new Scalar Converter:: Scalar Converter object
  */
@@ -142,19 +144,33 @@ void ScalarConverter::convert(const std::string& literal)
 
 	/* Check if it's a float */
 	float f = std::strtof(literal.c_str(), &end);
-	if (*end == 'f' && *(end + 1) == '\0' && errno != ERANGE) {
+	if ((*end == 'f' || *end == 'F') && *(end + 1) == '\0' && errno != ERANGE) {
 		std::cout << "char: ";
 		if (f >= 0 && f <= 127 && std::isprint(static_cast<int>(f)))
 			std::cout << "'" << static_cast<char>(f) << "'\n";
 		else
 			std::cout << "Non displayable\n";
+
 		std::cout << "int: ";
 		if (f >= static_cast<float>(INT_MIN) && f <= static_cast<float>(INT_MAX))
 			std::cout << static_cast<int>(f) << "\n";
 		else
 			std::cout << "impossible\n";
-		std::cout << "float: " << f << "f\n";
-		std::cout << "double: " << static_cast<double>(f) << "\n";
+
+		// Check for float and double ranges
+		if (f > FLT_MAX || f < -FLT_MAX) {
+			
+			std::cout << "float: impossible\n";
+		} else {
+			std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(f) << "f\n";
+		}
+		
+		if (f > DBL_MAX || f < -DBL_MAX) {
+			std::cout << "double: impossible\n";
+		} else {
+			std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(f) << "\n";
+		}
+
 		return;
 	}
 
@@ -162,7 +178,9 @@ void ScalarConverter::convert(const std::string& literal)
 	double d = std::strtod(literal.c_str(), &end);
 	if (*end == '\0' && errno != ERANGE) {
 		if (d < 32.0 || d > 126.0 || std::isnan(d) || std::isinf(d))
+		{
 			std::cout << "char: Non displayable\n";
+		}
 		else
 			std::cout << "char: \'" << static_cast<char>(d) << "\'\n";
 		if (d < static_cast<double>(INT_MIN) || d > static_cast<double>(INT_MAX) || std::isnan(d) || std::isinf(d))
