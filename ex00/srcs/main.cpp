@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 14:00:00 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/28 00:34:16 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/28 00:55:04 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void testConversion(const std::string& input, const std::string& expectedOutput)
     
     std::cout.rdbuf(old);
     std::string output = buffer.str();
-    ASSERT_TEST(output == expectedOutput, "Input: " + input + "\nExpected:\n" + expectedOutput + "\nGot:\n" + output);
+    ASSERT_TEST(output == expectedOutput, "Input: " + input + "\n" + output);
 }
 
 
@@ -102,7 +102,6 @@ int main(int argc, char *argv[]) {
         return 1;
     }
     
-    ScalarConverter::convert(argv[1]);
     
     /**
      * Tester
@@ -188,9 +187,11 @@ int main(int argc, char *argv[]) {
         std::cout << CYAN << "2.5e-3: " << NC << std::endl;
         testConversion("2.5e-3", "char: Non displayable\nint: 0\nfloat: 0.0f\ndouble: 0.0\n");
    
-
+        return 0;
 
     }
+    
+    ScalarConverter::convert(argv[1]);
 
     return 0;
 }
