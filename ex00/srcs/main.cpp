@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 14:00:00 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/27 19:38:42 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/28 00:34:16 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,7 @@ void testConversion(const std::string& input, const std::string& expectedOutput)
     ASSERT_TEST(output == expectedOutput, "Input: " + input + "\nExpected:\n" + expectedOutput + "\nGot:\n" + output);
 }
 
-/**
- * @brief Converts a numeric value to a string using std::ostringstream
- */
+
 /**
  * @brief Converts a numeric value to a string using std::ostringstream
  */
@@ -123,7 +121,7 @@ int main(int argc, char *argv[]) {
         /**
          * ADDITIONAL TESTS
          */
-        std::cout << CYAN << "\nADDITIONAL TESTS:" << NC << std::endl;
+        std::cout << CYAN << "ADDITIONAL TESTS:" << NC << std::endl;
 
         /* Test cases for char conversions */
         testConversion("a", "char: 'a'\nint: 97\nfloat: 97.0f\ndouble: 97.0\n");
@@ -134,14 +132,14 @@ int main(int argc, char *argv[]) {
         testConversion("-42", "char: impossible\nint: -42\nfloat: -42.0f\ndouble: -42.0\n");
 
         /* Test cases for float conversions */
-        testConversion("-42.0f", "char: Non displayable\nint: -42\nfloat: -42.0f\ndouble: -42.0\n");
+        testConversion("-42.0f", "char: impossible\nint: -42\nfloat: -42.0f\ndouble: -42.0\n");
         testConversion("nanf", "char: impossible\nint: impossible\nfloat: nanf\ndouble: nan\n");
         testConversion("+inff", "char: impossible\nint: impossible\nfloat: +inff\ndouble: +inf\n");
         testConversion("-inff", "char: impossible\nint: impossible\nfloat: -inff\ndouble: -inf\n");
 
         /* Test cases for double conversions */
         testConversion("42.0", "char: '*'\nint: 42\nfloat: 42.0f\ndouble: 42.0\n");
-        testConversion("-42.0", "char: Non displayable\nint: -42\nfloat: -42.0f\ndouble: -42.0\n");
+        testConversion("-42.0", "char: impossible\nint: -42\nfloat: -42.0f\ndouble: -42.0\n");
         testConversion("+inf", "char: impossible\nint: impossible\nfloat: +inff\ndouble: +inf\n");
         testConversion("-inf", "char: impossible\nint: impossible\nfloat: -inff\ndouble: -inf\n");
 
@@ -149,30 +147,46 @@ int main(int argc, char *argv[]) {
         testConversion("hello", "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible\n");
         testConversion("42.0a", "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible\n");
 
-        std::cout << CYAN << "\nADDITIONAL SUGGESTED TESTS:" << NC << std::endl;
+        std::cout << CYAN << "ADDITIONAL SUGGESTED TESTS:\n" << NC << std::endl;
 
+        std::cout << CYAN << "INT_MIN: " << INT_MIN << NC << std::endl;
         testConversion(toString(INT_MIN), "char: impossible\nint: " + toString(INT_MIN) + "\nfloat: " + toString(static_cast<float>(INT_MIN)) + "f\ndouble: " + toString(static_cast<double>(INT_MIN)) + "\n");
+        
+        std::cout << CYAN << "INT_MAX: " << INT_MAX << NC << std::endl;
         testConversion(toString(INT_MAX), "char: impossible\nint: " + toString(INT_MAX) + "\nfloat: " + toString(static_cast<float>(INT_MAX)) + "f\ndouble: " + toString(static_cast<double>(INT_MAX)) + "\n");
 
-        std::cout << "FLT_MIN: " << FLT_MIN << std::endl;
+        std::cout << CYAN << "FLT_MIN: " << FLT_MIN << NC << std::endl;
         testConversion(toString(FLT_MIN), "char: Non displayable\nint: 0\nfloat: " + toString(FLT_MIN) + "f\ndouble: " + toString(static_cast<double>(FLT_MIN)) + "\n");
-        std::cout << "FLT_MAX: " << FLT_MAX << std::endl;
+        
+        std::cout << CYAN << "FLT_MAX: " << FLT_MAX << NC << std::endl;
         testConversion(toString(FLT_MAX), "char: impossible\nint: impossible\nfloat: " + toString(FLT_MAX) + "f\ndouble: " + toString(static_cast<double>(FLT_MAX)) + "\n");
 
-        // testConversion(toString(DBL_MIN), "char: impossible\nint: 0\nfloat: " + toString(static_cast<float>(DBL_MIN)) + "f\ndouble: " + toString(DBL_MIN) + "\n");
-        // testConversion(toString(DBL_MAX), "char: impossible\nint: impossible\nfloat: " + toString(static_cast<float>(DBL_MAX)) + "f\ndouble: " + toString(DBL_MAX) + "\n");
+        std::cout << CYAN << "DBL_MIN: " << DBL_MIN << NC << std::endl;
+        testConversion(toString(DBL_MIN), "char: Non displayable\nint: 0\nfloat: " + toString(static_cast<float>(DBL_MIN)) + "f\ndouble: " + toString(DBL_MIN) + "\n");
+        
+        std::cout << CYAN << "DBL_MAX: " << DBL_MAX << NC << std::endl;
+        testConversion(toString(DBL_MAX), "char: impossible\nint: impossible\nfloat: " + toString(static_cast<float>(DBL_MAX)) + "f\ndouble: " + toString(DBL_MAX) + "\n");
 
-
+        std::cout << CYAN << "-0.0: " << NC << std::endl;
         testConversion("-0.0", "char: Non displayable\nint: 0\nfloat: -0.0f\ndouble: -0.0\n");
+
+        std::cout << CYAN << "+0.0: " << NC << std::endl;
         testConversion("+0.0", "char: Non displayable\nint: 0\nfloat: 0.0f\ndouble: 0.0\n");
 
+        std::cout << CYAN << "123abc: " << NC << std::endl;
         testConversion("123abc", "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible\n");
+
+        std::cout << CYAN << "Caractere impossible: " << NC << std::endl;
         testConversion("!@#$%", "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible\n");
 
-        testConversion("0x1A", "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible\n");
+        std::cout << CYAN << "0x1A: " << NC << std::endl;
+        testConversion("0x1A", "char: Non displayable\nint: 26\nfloat: 26.0f\ndouble: 26.0\n");
 
-        testConversion("1e10", "char: impossible\nint: 10000000000\nfloat: 10000000000.0f\ndouble: 10000000000.0\n");
-        testConversion("2.5e-3", "char: impossible\nint: 0\nfloat: 0.0025f\ndouble: 0.0025\n");
+        std::cout << CYAN << "1e10: " << NC << std::endl;
+        testConversion("1e10", "char: impossible\nint: impossible\nfloat: 10000000000.0f\ndouble: 10000000000.0\n");
+
+        std::cout << CYAN << "2.5e-3: " << NC << std::endl;
+        testConversion("2.5e-3", "char: Non displayable\nint: 0\nfloat: 0.0f\ndouble: 0.0\n");
    
 
 

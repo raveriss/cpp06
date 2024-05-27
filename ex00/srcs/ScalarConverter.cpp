@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:19:30 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/27 20:02:39 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/28 00:41:18 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,55 +143,87 @@ void ScalarConverter::convert(const std::string& literal)
 
 
 	/* Check if it's a float */
-	float f = std::strtof(literal.c_str(), &end);
-	if ((*end == 'f' || *end == 'F') && *(end + 1) == '\0' && errno != ERANGE) {
-		std::cout << "char: ";
-		if (f >= 0 && f <= 127 && std::isprint(static_cast<int>(f)))
-			std::cout << "'" << static_cast<char>(f) << "'\n";
-		else
-			std::cout << "Non displayable\n";
+    errno = 0;
+    float f = std::strtof(literal.c_str(), &end);
 
-		std::cout << "int: ";
-		if (f >= static_cast<float>(INT_MIN) && f <= static_cast<float>(INT_MAX))
-			std::cout << static_cast<int>(f) << "\n";
-		else
-			std::cout << "impossible\n";
+    if ((*end == 'f' || *end == 'F') && *(end + 1) == '\0' && errno != ERANGE) {
+        std::cout << "char: ";
+        if (f >= 0 && f <= 127 && std::isprint(static_cast<int>(f))) {
+            std::cout << "'" << static_cast<char>(f) << "'\n";
+        } else if (f < 0 || f > 127) {
+            std::cout << "impossible\n";
+        } else if (f < ' ' || f > '~') {
+            std::cout << "Non displayable\n";
+        } else {
+            std::cout << "impossible\n";
+        }
 
-		// Check for float and double ranges
-		if (f > FLT_MAX || f < -FLT_MAX) {
-			
-			std::cout << "float: impossible\n";
-		} else {
-			std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(f) << "f\n";
-		}
-		
-		if (f > DBL_MAX || f < -DBL_MAX) {
-			std::cout << "double: impossible\n";
-		} else {
-			std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(f) << "\n";
-		}
+        std::cout << "int: ";
+        if (f >= static_cast<float>(INT_MIN) && f <= static_cast<float>(INT_MAX)) {
+            std::cout << static_cast<int>(f) << "\n";
+        } else {
+            std::cout << "impossible\n";
+        }
 
-		return;
-	}
+        std::cout << "float: ";
+        if (f > FLT_MAX || f < -FLT_MAX) {
+            std::cout << "impossible\n";
+        } else {
+            std::cout << std::fixed << std::setprecision(1) << f << "f\n";
+        }
+
+        std::cout << "double: ";
+        if (f > DBL_MAX || f < -DBL_MAX) {
+            std::cout << "impossible\n";
+        } else {
+            std::cout << std::fixed << std::setprecision(1) << static_cast<double>(f) << "\n";
+        }
+
+        return;
+    }
 
 	/* Check if it's a double */
-	double d = std::strtod(literal.c_str(), &end);
-	if (*end == '\0' && errno != ERANGE) {
-		if (d < 32.0 || d > 126.0 || std::isnan(d) || std::isinf(d))
+    double d = std::strtod(literal.c_str(), &end);
+    errno = 0;
+    if (*end == '\0' && errno != ERANGE) {
+        std::cout << "char: ";
+        if (d >= 0 && d <= 127 && std::isprint(static_cast<int>(d))) {
+            std::cout << "'" << static_cast<char>(d) << "'\n";
+        } 
+		else
 		{
-			std::cout << "char: Non displayable\n";
-		}
-		else
-			std::cout << "char: \'" << static_cast<char>(d) << "\'\n";
-		if (d < static_cast<double>(INT_MIN) || d > static_cast<double>(INT_MAX) || std::isnan(d) || std::isinf(d))
-			std::cout << "int: impossible\n";
-		else
-			std::cout << "int: " << std::fixed << std::setprecision(1) << static_cast<int>(d) << "\n";
-		std::cout << "float: " << static_cast<float>(d) << "f\n";
-		std::cout << "double: " << d << "\n";
+			if (d < 0 || d > 127)  // Check for non-displayable range
+			{
+				std::cout << "impossible\n";
+			}
+			else if (d < ' ' || d > '~')
+			{
+				std::cout << "Non displayable\n";
+			}
+        }
+
+        std::cout << "int: ";
+        if (d >= static_cast<double>(INT_MIN) && d <= static_cast<double>(INT_MAX)) {
+            std::cout << static_cast<int>(d) << "\n";
+        } else {
+            std::cout << "impossible\n";
+        }
+
+        std::cout << "float: ";
+        if (d > FLT_MAX || d < -FLT_MAX) {
+            std::cout << "inf" << "f\n";
+        } else {
+            std::cout << std::fixed << std::setprecision(1) << static_cast<float>(d) << "f\n";
+        }
+
+        std::cout << "double: ";
+        if (d > DBL_MAX || d < -DBL_MAX) {
+            std::cout << "impossible\n";
+        } else {
+            std::cout << std::fixed << std::setprecision(1) << d << "\n";
+        }
 		return;
 	}
-
 	std::cout << "char: impossible\n";
 	std::cout << "int: impossible\n";
 	std::cout << "float: impossible\n";
