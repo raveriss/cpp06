@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 14:00:00 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/24 18:02:04 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/27 18:56:59 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@
 
 /* Inclusion de la bibliothèque standard pour obtenir les limites des types numériques */
 #include <limits>
+#include <stdio.h>
+
+#include <iomanip> // pour std::fixed, std::setprecision
 
 /* Definitions of ANSI color codes for console output */
 #define GREY        "\033[0;30m"
@@ -62,10 +65,33 @@ void testConversion(const std::string& input, const std::string& expectedOutput)
 /**
  * @brief Converts a numeric value to a string using std::ostringstream
  */
+/**
+ * @brief Converts a numeric value to a string using std::ostringstream
+ */
 template<typename T>
 std::string toString(T value) {
     std::ostringstream oss;
     oss << value;
+    return oss.str();
+}
+
+/**
+ * @brief Specialization of toString for float type
+ */
+template<>
+std::string toString<float>(float value) {
+    std::ostringstream oss;
+    oss << std::fixed << std::setprecision(1) << value;
+    return oss.str();
+}
+
+/**
+ * @brief Specialization of toString for double type
+ */
+template<>
+std::string toString<double>(double value) {
+    std::ostringstream oss;
+    oss << std::fixed << std::setprecision(1) << value;
     return oss.str();
 }
 
@@ -105,7 +131,7 @@ int main(int argc, char *argv[]) {
 
         /* Test cases for int conversions */
         testConversion("42", "char: '*'\nint: 42\nfloat: 42.0f\ndouble: 42.0\n");
-        testConversion("-42", "char: Non displayable\nint: -42\nfloat: -42.0f\ndouble: -42.0\n");
+        testConversion("-42", "char: impossible\nint: -42\nfloat: -42.0f\ndouble: -42.0\n");
 
         /* Test cases for float conversions */
         testConversion("-42.0f", "char: Non displayable\nint: -42\nfloat: -42.0f\ndouble: -42.0\n");

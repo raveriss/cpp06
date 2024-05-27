@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:19:30 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/24 17:49:12 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/27 18:46:46 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,15 +121,24 @@ void ScalarConverter::convert(const std::string& literal)
 	long int i = std::strtol(literal.c_str(), &end, 10);
 	if (*end == '\0' && errno != ERANGE && i >= INT_MIN && i <= INT_MAX)
 	{
-		if (i < ' ' || i > '~' || i == '0')
+		if (i < 0 || i > 127)  // Check for non-displayable range
+		{
+			std::cout << "char: impossible\n";
+		}
+		else if (i < ' ' || i > '~')
+		{
 			std::cout << "char: Non displayable\n";
+		}
 		else
+		{
 			std::cout << "char: \'" << static_cast<char>(i) << "\'\n";
+		}
 		std::cout << "int: " << i << "\n";
 		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(i) << "f\n";
 		std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(i) << "\n";
 		return;
 	}
+
 
 	/* Check if it's a float */
 	float f = std::strtof(literal.c_str(), &end);
