@@ -6,11 +6,11 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:43:21 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/28 12:36:22 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/28 14:58:23 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Data.hpp"
+#include "../incs/Data.hpp"
 
 /**
  * @brief Constructeur par défaut initialisant id à 0 et name à "default"

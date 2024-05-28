@@ -6,19 +6,25 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:49:18 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/28 12:04:05 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/28 14:58:29 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* Inclusion de la classe Serializer */
-#include "Serializer.hpp"
+#include "../incs/Serializer.hpp"
 
+/**
+ * @brief Sérialise un pointeur de type Data en uintptr_t
+ */
 std::size_t Serializer::serialize(Data* ptr)
 {
     return reinterpret_cast<std::size_t>(ptr);
 }
 
-Data* Serializer::deserialize(std::size_t raw)
+/**
+ * @brief Désérialise un uintptr_t en un pointeur de type Data
+ */
+Data* Serializer::deserialize(uintptr_t raw)
 {
     return reinterpret_cast<Data*>(raw);
 }

@@ -6,11 +6,11 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 14:00:00 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/28 12:34:53 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/28 14:58:35 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Serializer.hpp"
+#include "../incs/Serializer.hpp"
 #include <iostream>
 #include <string>
 #include <sstream> // Pour std::ostringstream

@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:45:00 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/28 11:59:25 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/28 14:24:13 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 /* Inclusion de la classe Data */
 #include "Data.hpp"
 
-/* Inclusion de la bibliothèque standard pour les types entiers */
+/* Inclusion de la bibliothèque stands  sard pour les types entiers */
 #include <cstddef>
+
+
+#include <stdint.h>
 
 /**
  * @brief Serializer class
@@ -28,7 +31,7 @@ class Serializer
         static std::size_t serialize(Data* ptr);
 
         /* Désérialise un uintptr_t en un pointeur de type Data */
-        static Data * deserialize(std::size_t raw);
+        static Data * deserialize(uintptr_t raw);
         
     private:
         Serializer();
