@@ -1,12 +1,28 @@
-#include <iostream>
-#include "Base.hpp"
-#include "A.hpp"
-#include "B.hpp"
-#include "C.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/29 16:46:13 by raveriss          #+#    #+#             */
+/*   Updated: 2024/05/29 17:04:47 by raveriss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* Inclusion des classes Base, A, B et C */
+#include "../incs/Base.hpp"
+#include "../incs/A.hpp"
+#include "../incs/B.hpp"
+#include "../incs/C.hpp"
 #include "../incs/identify.hpp"
 #include "../incs/generate.hpp"
-#include <sstream> // Inclusion pour std::ostringstream
-#include <typeinfo>
+
+/* Inclusion de la bibliothèque standard pour std::cout */
+#include <iostream>
+
+/* Inclusion de la bibliothèque standard pour std::ostringstream */
+#include <sstream>
 
 /* Definitions of ANSI color codes for console output */
 #define GREY        "\033[0;30m"
@@ -34,9 +50,10 @@ void testIdentifyPointer(Base* p, const std::string& expected) {
 
     std::cout.rdbuf(old);
     std::string output = buffer.str();
-    ASSERT_TEST(output == expected, "Pointer identification: Expected: " + expected + "Got: " + output);
+    
+    std::string message = "Pointer identification: Expected: " + (expected.empty() ? "NULL\n" : expected) + "Got: " + (output.empty() ? "NULL" : output);
+    ASSERT_TEST(output == expected, message);
 }
-
 
 /**
  * Fonction pour tester l'identification d'une référence Base&
@@ -52,7 +69,6 @@ void testIdentifyReference(Base& p, const std::string& expected) {
     ASSERT_TEST(output == expected, "Reference identification: Expected: " + expected + "Got: " + output);
 }
 
-
 /**
  * Fonction pour tester la génération et l'identification d'un objet
  */
@@ -67,10 +83,10 @@ void testGenerateAndIdentify(int iteration) {
     std::string expectedOutput = expectedBuffer.str();
     std::cout.rdbuf(old);
     
-    // Print the expected output for the current iteration
+    /* Print the expected output for the current iteration */
     std::cout << expectedOutput;
 
-    // Capture and test identify(Base* p)
+    /* Capture the output of identify(Base* p) */
     std::ostringstream pointerBuffer;
     old = std::cout.rdbuf(pointerBuffer.rdbuf());
     identify(p);
@@ -79,7 +95,7 @@ void testGenerateAndIdentify(int iteration) {
     ASSERT_TEST(pointerOutput == expectedOutput.substr(expectedOutput.find(':') + 2), 
                 "Identify by pointer: Expected: " + expectedOutput.substr(expectedOutput.find(':') + 2) + "Got: " + pointerOutput);
 
-    // Capture and test identify(Base& p)
+    /* Capture the output of identify(Base& p) */
     std::ostringstream referenceBuffer;
     old = std::cout.rdbuf(referenceBuffer.rdbuf());
     identify(*p);
@@ -91,16 +107,15 @@ void testGenerateAndIdentify(int iteration) {
     delete p;
 }
 
-
 int main()
 {
-    // Test de génération et identification
+    /* Test de génération et identification */
     std::cout << CYAN << "RUNNING GENERATE AND IDENTIFY TESTS..." << NC << std::endl;
     for (int i = 0; i < 10; ++i) {
         testGenerateAndIdentify(i);
     }
 
-    // Test de tous les cas possibles pour identifier(Base*)
+    /* Test de tous les cas possibles pour identifier(Base*) */
     std::cout << CYAN << "\nTESTING IDENTIFY(Base*)..." << NC << std::endl;
     A a;
     B b;
@@ -109,26 +124,24 @@ int main()
     testIdentifyPointer(&b, "B\n");
     testIdentifyPointer(&c, "C\n");
 
-    // Test de tous les cas possibles pour identifier(Base&)
+    /* Test de tous les cas possibles pour identifier(Base&) */
     std::cout << CYAN << "\nTESTING IDENTIFY(Base&)..." << NC << std::endl;
     testIdentifyReference(a, "A\n");
     testIdentifyReference(b, "B\n");
     testIdentifyReference(c, "C\n");
 
-    // Test d'un pointeur nul
+    /* Test d'un pointeur nul */
     std::cout << CYAN << "\nTESTING IDENTIFY(NULL)..." << NC << std::endl;
     Base* nullPtr = NULL;
     testIdentifyPointer(nullPtr, "");
 
-    // Test de références invalides en utilisant des blocs try-catch pour éviter les crash
-    std::cout << CYAN << "\n\nTESTING INVALID REFERENCE IDENTIFICATION..." << NC<< std::endl;
-    try
-    {
-        identify(dynamic_cast<Base&>(*nullPtr));
+    /* Test d'une référence invalide */
+    std::cout << CYAN << "\n\nTESTING INVALID REFERENCE IDENTIFICATION..." << NC << std::endl;
+    try {
+        Base& ref = dynamic_cast<Base&>(*nullPtr);
+        identify(ref);
         std::cout << GREEN "[TEST PASSED] " NC "Invalid reference identification: No exception caught\n";
-    }
-    catch (...)
-    {
+    } catch (...) {
         std::cout << RED "[TEST FAILED] " NC "Invalid reference identification: Caught unknown exception\n";
     }
 

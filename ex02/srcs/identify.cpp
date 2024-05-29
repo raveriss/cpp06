@@ -6,11 +6,11 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 14:42:24 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/28 15:06:05 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/29 16:49:41 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Inclusion de la librairie standard */
+/* Inclusion de la bibliothèque std pour flux d'entrée/sortie standard */
 #include <iostream>
 
 /* Inclusion de la classe Base */
@@ -63,3 +63,5 @@ void identify(Base& p)
     catch (...)
     {}
 }
+
+/* identifiy.cpp */

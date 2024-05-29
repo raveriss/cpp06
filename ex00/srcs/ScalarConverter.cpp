@@ -6,11 +6,11 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:19:30 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/28 10:46:04 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/29 16:42:38 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#include "../incs/ScalarConverter.hpp"
 
 /* Inclusion de la bibliothèque standard pour l'utilisation de flux d'entrée/sortie standard */
 #include <iostream>
@@ -140,7 +140,6 @@ void ScalarConverter::convert(const std::string& literal)
 		std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(i) << "\n";
 		return;
 	}
-
 
 	/* Check if it's a float */
     errno = 0;
