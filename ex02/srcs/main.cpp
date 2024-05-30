@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 16:46:13 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/30 21:53:47 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/30 22:00:20 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ void testIdentifyPointer(Base* p, const std::string& expected)
 /**
  * Fonction pour tester l'identification d'une référence Base&
  */
-void testIdentifyReference(Base& p, const std::string& expected) {
+void testIdentifyReference(Base& p, const std::string& expected)
+{
     std::ostringstream buffer;
     std::streambuf* rootCoutStream = std::cout.rdbuf(buffer.rdbuf());
 
@@ -85,7 +86,8 @@ void testIdentifyReference(Base& p, const std::string& expected) {
 /**
  * Fonction pour tester la génération et l'identification d'un objet
  */
-void testGenerateAndIdentify(int iteration) {
+void testGenerateAndIdentify(int iteration)
+{
     Base* p = generate();
     
     /* Capture the expected output */
@@ -124,7 +126,8 @@ int main()
 {
     /* Test de génération et identification */
     std::cout << CYAN << "RUNNING GENERATE AND IDENTIFY TESTS..." << NC << std::endl;
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < 10; ++i)
+    {
         testGenerateAndIdentify(i);
     }
 
@@ -149,13 +152,16 @@ int main()
     testIdentifyPointer(nullPtr, "");
 
     /* Test d'une référence invalide */
-        Base* nullPtr2 = NULL;
+    Base* nullPtr2 = NULL;
     std::cout << CYAN << "\n\nTESTING INVALID REFERENCE IDENTIFICATION..." << NC << std::endl;
-    try {
+    try
+    {
         Base& ref = dynamic_cast<Base&>(*nullPtr2);
         identify(ref);
         std::cout << GREEN "[TEST PASSED] " NC "Invalid reference identification: No exception caught\n";
-    } catch (...) {
+    }
+    catch (...)
+    {
         std::cout << RED "[TEST FAILED] " NC "Invalid reference identification: Caught unknown exception\n";
     }
 

@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 14:40:38 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/29 16:51:15 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/30 21:58:57 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@
 /**
  * @brief Génère un objet de type A, B ou C
  */
-Base* generate(void) {
+Base* generate(void)
+{
     std::srand(static_cast<unsigned int>(std::time(0)));
     int random = std::rand() % 3;
 

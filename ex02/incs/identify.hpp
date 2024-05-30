@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 14:55:04 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/30 15:00:08 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/30 21:58:36 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@
 #include "Base.hpp"
 
 /**
- * @brief identify function
+ * @brief Identifie le type réel de l'objet pointé par p
  */
 void identify(Base* p);
+
+/**
+ * @brief Identifie le type réel de l'objet référencé par p
+ */
 void identify(Base& p);
 
