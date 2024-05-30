@@ -39,9 +39,6 @@
     if (expression) { std::cout << GREEN "[TEST PASSED] " NC << message; } \
     else { std::cout << RED "[TEST FAILED] " NC << message; }
 
-/* Déclaration de la classe D qui n'hérite pas de Base */
-class D {};
-
 /**
  * Fonction pour tester l'identification d'un pointeur Base*
  */
