@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 14:55:04 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/30 21:58:36 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/30 22:30:28 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,3 +26,4 @@ void identify(Base* p);
  */
 void identify(Base& p);
 
+/* identify.hpp */

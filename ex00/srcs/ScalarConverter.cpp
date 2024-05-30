@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:19:30 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/30 22:21:43 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/30 22:29:48 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,3 +228,5 @@ void ScalarConverter::convert(const std::string& literal)
 	std::cout << "float: impossible\n";
 	std::cout << "double: impossible\n";
 }
+
+/* ScalarConverter.cpp */

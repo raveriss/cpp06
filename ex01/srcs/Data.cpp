@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:43:21 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/30 14:32:04 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/30 22:27:25 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,5 @@ Data& Data::operator=(const Data& other)
  */
 Data::~Data()
 {}
+
+/* Data.cpp */

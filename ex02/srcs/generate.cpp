@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 14:40:38 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/30 21:58:57 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/30 22:30:36 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,5 @@ Base* generate(void)
     else
         return new C();
 }
+
+/* generate.cpp */

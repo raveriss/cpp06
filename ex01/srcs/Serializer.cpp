@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:49:18 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/30 22:07:35 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/30 22:30:07 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,3 +57,5 @@ Serializer & Serializer::operator=(const Serializer & other)
  */
 Serializer::~Serializer()
 {}
+
+/* Serializer.cpp */

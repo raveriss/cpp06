@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 21:45:14 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/24 17:49:50 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/30 22:29:40 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,3 +38,5 @@ class ScalarConverter
         /* Destructeur */
         ~ScalarConverter();
 };
+
+/* ScalarConverter.hpp */
