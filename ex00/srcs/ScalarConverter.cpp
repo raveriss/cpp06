@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:19:30 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/30 14:24:42 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/30 22:21:43 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 /* Inclusion de la bibliothèque standard pour std::isprint, std::isdigit */
 #include <cctype>
 
-/* Inclusion de la bibliothèque standard pour errno pour la gestion des erreurs */
+/* Inclusion de la bibliothèque standard pour std::fixed, std::setprecision */
 #include <cerrno>
 
 /* Inclusion de la bibliothèque standard pour les limites des types entiers et flottants */
@@ -33,14 +33,12 @@
 /* Inclusion de la bibliothèque standard pour les limites des types flottants */
 #include <cfloat>
 
-// lis mon code a quel moment j'ai besoin include de cmath
+/* Inclusion de la bibliothèque standard pour les fonctions mathématiques */
 #include <cmath>
 
 /* Inclusion de la bibliothèque standard pour manipuler la sortie formatée */
 #include <iomanip>
 
-
-#include <stdio.h>
 /**
  * @brief Construct a new Scalar Converter:: Scalar Converter object
  */
