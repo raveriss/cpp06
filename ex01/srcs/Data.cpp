@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:43:21 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/28 14:58:23 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/30 14:32:04 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,15 @@
 /**
  * @brief Constructeur par défaut initialisant id à 0 et name à "default"
  */
-Data::Data() : id(0), name("default") {}
+Data::Data()
+: id(0), name("default")
+{}
 
 /**
  * @brief Constructeur de copie initialisant avec les valeurs de l'autre instance
  */
-Data::Data(const Data& other) : id(other.id), name(other.name) 
+Data::Data(const Data& other)
+: id(other.id), name(other.name) 
 {}
 
 /**
@@ -39,4 +42,5 @@ Data& Data::operator=(const Data& other)
 /**
  * @brief Destroy the Data:: Data object
  */
-Data::~Data() {}
+Data::~Data()
+{}

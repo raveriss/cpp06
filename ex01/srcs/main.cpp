@@ -6,15 +6,26 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 14:00:00 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/28 14:58:35 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/30 14:35:08 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/* Inclusion de la classe Serializer */
 #include "../incs/Serializer.hpp"
+
+/* Inclusion de la bibliothèque standard pour cout */
 #include <iostream>
+
+/* Inclusion de la bibliothèque standard pour std::string */
 #include <string>
-#include <sstream> // Pour std::ostringstream
+
+/* Inclusion de la bibliothèque standard pour std::ostringstream */
+#include <sstream>
+
+/* Inclusion de la bibliothèque standard pour std::size_t */
 #include <cstring>
+
+/* Inclusion de la bibliothèque standard pour INT_MAX, INT_MIN */
 #include <climits>
 
 /**
@@ -25,7 +36,7 @@
     else { std::cout << "\033[31m[TEST FAILED]\033[0m " << message << std::endl; }
 
 /** 
- * Convertit std::size_t en std::string
+ * @brief Convertit std::size_t en std::string
  */
 std::string toString(std::size_t value)
 {
@@ -35,7 +46,7 @@ std::string toString(std::size_t value)
 }
 
 /** 
- * Convertit int en std::string
+ * @brief Convertit int en std::string
  */
 std::string toString(int value)
 {
@@ -45,7 +56,7 @@ std::string toString(int value)
 }
 
 /** 
- * Teste la sérialisation et désérialisation des pointeurs Data
+ * @brief Teste la sérialisation et désérialisation des pointeurs Data
  */
 void testPointerSerialization()
 {
@@ -73,7 +84,7 @@ void testPointerSerialization()
 }
 
 /** 
- * Teste la sérialisation et désérialisation des données
+ * @brief Teste la sérialisation et désérialisation des données
  */
 void testSerialization(const Data& original)
 {
@@ -91,7 +102,7 @@ void testSerialization(const Data& original)
 }
 
 /** 
- * Point d'entrée principal du programme
+ * @brief Point d'entrée principal du programme
  */
 int main()
 {

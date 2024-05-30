@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 14:42:24 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/29 16:49:41 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/30 16:11:06 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include <iostream>
 
 /* Inclusion de la classe Base */
-#include "Base.hpp"
+#include "../incs/Base.hpp"
 
 /* Inclusion des classes A, B et C */
-#include "A.hpp"
-#include "B.hpp"
-#include "C.hpp"
+#include "../incs/A.hpp"
+#include "../incs/B.hpp"
+#include "../incs/C.hpp"
 
 /**
  * @brief Identifie le type réel de l'objet pointé par Base* ou Base* (A, B ou C)

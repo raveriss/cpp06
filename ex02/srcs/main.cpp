@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 16:46:13 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/29 17:04:47 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/30 17:58:43 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,26 @@
     if (expression) { std::cout << GREEN "[TEST PASSED] " NC << message; } \
     else { std::cout << RED "[TEST FAILED] " NC << message; }
 
+/* Déclaration de la classe D qui n'hérite pas de Base */
+class D {};
+
 /**
  * Fonction pour tester l'identification d'un pointeur Base*
  */
-void testIdentifyPointer(Base* p, const std::string& expected) {
+void testIdentifyPointer(Base* p, const std::string& expected)
+{
+    /* Création d'un objet ostringstream pour capturer la sortie */
     std::ostringstream buffer;
+
+    /* Redirection de std::cout vers le tampon de flux */
     std::streambuf* old = std::cout.rdbuf(buffer.rdbuf());
 
     identify(p);
 
+    /* Restauration du tampon de flux d'origine de std::cout */
     std::cout.rdbuf(old);
+
+    /* Capture the output in a string */
     std::string output = buffer.str();
     
     std::string message = "Pointer identification: Expected: " + (expected.empty() ? "NULL\n" : expected) + "Got: " + (output.empty() ? "NULL" : output);
@@ -136,9 +146,10 @@ int main()
     testIdentifyPointer(nullPtr, "");
 
     /* Test d'une référence invalide */
+        Base* nullPtr2 = NULL;
     std::cout << CYAN << "\n\nTESTING INVALID REFERENCE IDENTIFICATION..." << NC << std::endl;
     try {
-        Base& ref = dynamic_cast<Base&>(*nullPtr);
+        Base& ref = dynamic_cast<Base&>(*nullPtr2);
         identify(ref);
         std::cout << GREEN "[TEST PASSED] " NC "Invalid reference identification: No exception caught\n";
     } catch (...) {

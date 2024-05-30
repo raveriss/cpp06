@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:19:30 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/29 16:42:38 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/30 14:24:42 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 /* Inclusion de la bibliothèque standard pour std::isprint, std::isdigit */
 #include <cctype>
 
-/* Inclusion de la bibliothèque standard pour std::fixed, std::setprecision */
+/* Inclusion de la bibliothèque standard pour errno pour la gestion des erreurs */
 #include <cerrno>
 
 /* Inclusion de la bibliothèque standard pour les limites des types entiers et flottants */
@@ -33,7 +33,7 @@
 /* Inclusion de la bibliothèque standard pour les limites des types flottants */
 #include <cfloat>
 
-/* Inclusion de la bibliothèque standard pour les fonctions mathématiques */
+// lis mon code a quel moment j'ai besoin include de cmath
 #include <cmath>
 
 /* Inclusion de la bibliothèque standard pour manipuler la sortie formatée */
@@ -123,7 +123,8 @@ void ScalarConverter::convert(const std::string& literal)
 	long int i = std::strtol(literal.c_str(), &end, 10);
 	if (*end == '\0' && errno != ERANGE && i >= INT_MIN && i <= INT_MAX)
 	{
-		if (i < 0 || i > 127)  // Check for non-displayable range
+		/* Check for non-displayable range */
+		if (i < 0 || i > 127)
 		{
 			std::cout << "char: impossible\n";
 		}
@@ -191,7 +192,8 @@ void ScalarConverter::convert(const std::string& literal)
         } 
 		else
 		{
-			if (d < 0 || d > 127)  // Check for non-displayable range
+			/* Check for non-displayable range */
+			if (d < 0 || d > 127)
 			{
 				std::cout << "impossible\n";
 			}
