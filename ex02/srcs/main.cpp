@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 16:46:13 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/30 17:58:43 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/30 19:21:08 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,14 @@ void testIdentifyPointer(Base* p, const std::string& expected)
     /* Création d'un objet ostringstream pour capturer la sortie */
     std::ostringstream buffer;
 
-    /* Redirection de std::cout vers le tampon de flux */
-    std::streambuf* old = std::cout.rdbuf(buffer.rdbuf());
+    /* Creation d'un tampon de flux */
+    std::streambuf* old;
+
+    /* Sauvegarde du tampon de flux courant de std::cout */
+    old = std::cout.rdbuf();
+
+    /* Redirection de std::cout vers le tampon de flux buffer */
+    std::cout.rdbuf(buffer.rdbuf());
 
     identify(p);
 
