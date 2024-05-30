@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 16:46:13 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/30 19:21:08 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/30 21:53:47 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 #define CYAN        "\033[0;36m"
 #define NC          "\033[0m"
 
-// Macro pour vérifier les résultats de test et afficher les messages appropriés
+/* Macro pour vérifier les résultats de test et afficher les messages appropriés */
 #define ASSERT_TEST(expression, message) \
     if (expression) { std::cout << GREEN "[TEST PASSED] " NC << message; } \
     else { std::cout << RED "[TEST FAILED] " NC << message; }
@@ -47,11 +47,11 @@ void testIdentifyPointer(Base* p, const std::string& expected)
     /* Création d'un objet ostringstream pour capturer la sortie */
     std::ostringstream buffer;
 
-    /* Creation d'un tampon de flux */
-    std::streambuf* old;
+    /* Creation d'un pointeur rootCoutStream de type std::streambuf pour sauvegarder le tampon de flux courant de std::cout */
+    std::streambuf *rootCoutStream;
 
     /* Sauvegarde du tampon de flux courant de std::cout */
-    old = std::cout.rdbuf();
+    rootCoutStream = std::cout.rdbuf();
 
     /* Redirection de std::cout vers le tampon de flux buffer */
     std::cout.rdbuf(buffer.rdbuf());
@@ -59,7 +59,7 @@ void testIdentifyPointer(Base* p, const std::string& expected)
     identify(p);
 
     /* Restauration du tampon de flux d'origine de std::cout */
-    std::cout.rdbuf(old);
+    std::cout.rdbuf(rootCoutStream);
 
     /* Capture the output in a string */
     std::string output = buffer.str();
@@ -73,11 +73,11 @@ void testIdentifyPointer(Base* p, const std::string& expected)
  */
 void testIdentifyReference(Base& p, const std::string& expected) {
     std::ostringstream buffer;
-    std::streambuf* old = std::cout.rdbuf(buffer.rdbuf());
+    std::streambuf* rootCoutStream = std::cout.rdbuf(buffer.rdbuf());
 
     identify(p);
 
-    std::cout.rdbuf(old);
+    std::cout.rdbuf(rootCoutStream);
     std::string output = buffer.str();
     ASSERT_TEST(output == expected, "Reference identification: Expected: " + expected + "Got: " + output);
 }
@@ -88,32 +88,32 @@ void testIdentifyReference(Base& p, const std::string& expected) {
 void testGenerateAndIdentify(int iteration) {
     Base* p = generate();
     
-    // Capture the expected output
+    /* Capture the expected output */
     std::ostringstream expectedBuffer;
     expectedBuffer << "\nIteration " << iteration << " - Generated object: ";
-    std::streambuf* old = std::cout.rdbuf(expectedBuffer.rdbuf());
+    std::streambuf* rootCoutStream = std::cout.rdbuf(expectedBuffer.rdbuf());
     identify(p);
     std::string expectedOutput = expectedBuffer.str();
-    std::cout.rdbuf(old);
+    std::cout.rdbuf(rootCoutStream);
     
     /* Print the expected output for the current iteration */
     std::cout << expectedOutput;
 
     /* Capture the output of identify(Base* p) */
     std::ostringstream pointerBuffer;
-    old = std::cout.rdbuf(pointerBuffer.rdbuf());
+    rootCoutStream = std::cout.rdbuf(pointerBuffer.rdbuf());
     identify(p);
     std::string pointerOutput = pointerBuffer.str();
-    std::cout.rdbuf(old);
+    std::cout.rdbuf(rootCoutStream);
     ASSERT_TEST(pointerOutput == expectedOutput.substr(expectedOutput.find(':') + 2), 
                 "Identify by pointer: Expected: " + expectedOutput.substr(expectedOutput.find(':') + 2) + "Got: " + pointerOutput);
 
     /* Capture the output of identify(Base& p) */
     std::ostringstream referenceBuffer;
-    old = std::cout.rdbuf(referenceBuffer.rdbuf());
+    rootCoutStream = std::cout.rdbuf(referenceBuffer.rdbuf());
     identify(*p);
     std::string referenceOutput = referenceBuffer.str();
-    std::cout.rdbuf(old);
+    std::cout.rdbuf(rootCoutStream);
     ASSERT_TEST(referenceOutput == expectedOutput.substr(expectedOutput.find(':') + 2), 
                 "Identify by reference: Expected: " + expectedOutput.substr(expectedOutput.find(':') + 2) + "Got: " + referenceOutput);
 
