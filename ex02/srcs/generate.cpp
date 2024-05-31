@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 14:40:38 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/30 22:30:36 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/31 17:22:17 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
  */
 Base* generate(void)
 {
-    std::srand(static_cast<unsigned int>(std::time(0)));
     int random = std::rand() % 3;
 
     if (random == 0)

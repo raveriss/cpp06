@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 16:46:13 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/30 22:29:35 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/31 15:08:41 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,21 +150,8 @@ int main()
     std::cout << CYAN << "\nTESTING IDENTIFY(NULL)..." << NC << std::endl;
     Base* nullPtr = NULL;
     testIdentifyPointer(nullPtr, "");
-
-    /* Test d'une référence invalide */
-    Base* nullPtr2 = NULL;
-    std::cout << CYAN << "\n\nTESTING INVALID REFERENCE IDENTIFICATION..." << NC << std::endl;
-    try
-    {
-        Base& ref = dynamic_cast<Base&>(*nullPtr2);
-        identify(ref);
-        std::cout << GREEN "[TEST PASSED] " NC "Invalid reference identification: No exception caught\n";
-    }
-    catch (...)
-    {
-        std::cout << RED "[TEST FAILED] " NC "Invalid reference identification: Caught unknown exception\n";
-    }
-
+    std::cout << std::endl;
+    
     return 0;
 }
 

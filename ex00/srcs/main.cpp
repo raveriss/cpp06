@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 14:00:00 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/30 22:29:44 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/31 13:52:19 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,7 @@ int main(int argc, char *argv[]) {
         testConversion(toString(DBL_MIN), "char: Non displayable\nint: 0\nfloat: " + toString(static_cast<float>(DBL_MIN)) + "f\ndouble: " + toString(DBL_MIN) + "\n");
         
         std::cout << CYAN << "DBL_MAX: " << DBL_MAX << NC << std::endl;
-        testConversion(toString(DBL_MAX), "char: impossible\nint: impossible\nfloat: " + toString(static_cast<float>(DBL_MAX)) + "f\ndouble: " + toString(DBL_MAX) + "\n");
+        testConversion(toString(DBL_MAX), "char: impossible\nint: impossible\nfloat: +" + toString(static_cast<float>(DBL_MAX)) + "f\ndouble: " + toString(DBL_MAX) + "\n");
 
         /* Test case for positive negative floating point digit 0 */
         std::cout << CYAN << "-0.0: " << NC << std::endl;

@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:19:30 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/30 22:29:48 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/31 13:47:29 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,11 +209,20 @@ void ScalarConverter::convert(const std::string& literal)
         }
 
         std::cout << "float: ";
-        if (d > FLT_MAX || d < -FLT_MAX) {
-            std::cout << "inf" << "f\n";
-        } else {
-            std::cout << std::fixed << std::setprecision(1) << static_cast<float>(d) << "f\n";
-        }
+		if (d > FLT_MAX) {
+			std::cout << "+inf" << "f\n";
+		} else if (d < -FLT_MAX) {
+			std::cout << "-inf" << "f\n";
+		} else {
+			std::cout << std::fixed << std::setprecision(1) << static_cast<float>(d) << "f\n";
+		}
+
+		
+        // if (d > FLT_MAX || d < -FLT_MAX) {
+        //     std::cout << "inf" << "f\n";
+        // } else {
+        //     std::cout << std::fixed << std::setprecision(1) << static_cast<float>(d) << "f\n";
+        // }
 
         std::cout << "double: ";
         if (d > DBL_MAX || d < -DBL_MAX) {

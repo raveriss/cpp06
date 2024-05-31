@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 14:55:04 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/30 22:30:28 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/05/31 15:01:08 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 /* Inclusion de la classe Base */
 #include "Base.hpp"
+
+#include <exception> // Pour std::bad_cast
 
 /**
  * @brief Identifie le type réel de l'objet pointé par p
