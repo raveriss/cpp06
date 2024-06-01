@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 16:46:13 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/31 15:08:41 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/06/01 17:15:45 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 #include "../incs/C.hpp"
 #include "../incs/identify.hpp"
 #include "../incs/generate.hpp"
+#include <ctime>
+#include <cstdlib>
+
 
 /* Inclusion de la bibliothèque standard pour std::cout */
 #include <iostream>
@@ -124,6 +127,9 @@ void testGenerateAndIdentify(int iteration)
 
 int main()
 {
+    // Initialisation du générateur de nombres aléatoires une seule fois
+    std::srand(static_cast<unsigned int>(std::time(0)));
+
     /* Test de génération et identification */
     std::cout << CYAN << "RUNNING GENERATE AND IDENTIFY TESTS..." << NC << std::endl;
     for (int i = 0; i < 10; ++i)

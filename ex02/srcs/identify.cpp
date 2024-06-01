@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 14:42:24 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/31 17:23:38 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/06/01 16:53:19 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,31 +39,6 @@ void identify(Base* p)
         std::cout << "C" << std::endl;
     else
         std::cerr << "Error: Unknown type" << std::endl;
-}
-
-void identify(Base &p)
-{
-    try
-    {
-        A &a = dynamic_cast<A&>(p);
-        (void)a;
-        std::cout << "A" << std::endl;
-    }
-    catch (std::exception &e) {}
-    try
-    {
-        B &b = dynamic_cast<B&>(p);
-        (void)b;
-        std::cout << "B" << std::endl;
-    }
-    catch (std::exception &e) {}
-    try
-    {
-        C &c = dynamic_cast<C&>(p);
-        (void)c;
-        std::cout << "C" << std::endl;
-    }
-    catch (std::exception &e) {}
 }
 
 /**
