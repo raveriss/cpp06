@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 16:46:13 by raveriss          #+#    #+#             */
-/*   Updated: 2024/06/01 17:15:45 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/06/03 00:12:26 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 #include "../incs/generate.hpp"
 #include <ctime>
 #include <cstdlib>
-
 
 /* Inclusion de la bibliothèque standard pour std::cout */
 #include <iostream>
@@ -76,13 +75,26 @@ void testIdentifyPointer(Base* p, const std::string& expected)
  */
 void testIdentifyReference(Base& p, const std::string& expected)
 {
+    /* Création d'un objet ostringstream pour capturer la sortie */
     std::ostringstream buffer;
-    std::streambuf* rootCoutStream = std::cout.rdbuf(buffer.rdbuf());
+
+    /* Creation d'un pointeur rootCoutStream de type std::streambuf pour sauvegarder le tampon de flux courant de std::cout */
+    std::streambuf *rootCoutStream;
+
+    /* Sauvegarde du tampon de flux courant de std::cout */
+    rootCoutStream = std::cout.rdbuf();
+
+    /* Redirection de std::cout vers le tampon de flux buffer */
+    std::cout.rdbuf(buffer.rdbuf());
 
     identify(p);
 
+    /* Restauration du tampon de flux d'origine de std::cout */
     std::cout.rdbuf(rootCoutStream);
+
+    /* Capture the output in a string */
     std::string output = buffer.str();
+    
     ASSERT_TEST(output == expected, "Reference identification: Expected: " + expected + "Got: " + output);
 }
 
@@ -93,11 +105,14 @@ void testGenerateAndIdentify(int iteration)
 {
     Base* p = generate();
     
-    /* Capture the expected output */
+    /* Création d'un objet ostringstream pour capturer la sortie */
     std::ostringstream expectedBuffer;
     expectedBuffer << "\nIteration " << iteration << " - Generated object: ";
+    
     std::streambuf* rootCoutStream = std::cout.rdbuf(expectedBuffer.rdbuf());
     identify(p);
+
+    /* Capture the output in a string */
     std::string expectedOutput = expectedBuffer.str();
     std::cout.rdbuf(rootCoutStream);
     
