@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 16:46:13 by raveriss          #+#    #+#             */
-/*   Updated: 2024/06/03 00:55:46 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/06/03 01:40:13 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@
 #include "../incs/C.hpp"
 #include "../incs/identify.hpp"
 #include "../incs/generate.hpp"
+
+/* Inclusion de la bibliothèque ctime pour std::time */
 #include <ctime>
+
+/* Inclusion de la bibliothèque cstdlib pour std::rand */
 #include <cstdlib>
 
 /* Inclusion de la bibliothèque standard pour std::cout */
@@ -222,8 +226,13 @@ int main()
 
     /* TESTING IDENTIFY(NULL) */
     std::cout << CYAN << "\nTESTING IDENTIFY(NULL)..." << NC << std::endl;
+
+    /* Création d'un pointeur NULL */
     Base* nullPtr = NULL;
+
+    /* Test de l'identification d'un pointeur NULL */
     testIdentifyPointer(nullPtr, "");
+
     std::cout << std::endl;
     
     return 0;
