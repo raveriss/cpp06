@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 16:46:13 by raveriss          #+#    #+#             */
-/*   Updated: 2024/06/03 00:36:31 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/06/03 00:55:46 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void testIdentifyPointer(Base* p, const std::string& expected)
     /* Redirection de std::cout vers le tampon de flux buffer */
     std::cout.rdbuf(buffer.rdbuf());
 
+    /* Appel de la fonction identify(Base* p) */
     identify(p);
 
     /* Restauration du tampon de flux d'origine de std::cout */
@@ -66,7 +67,10 @@ void testIdentifyPointer(Base* p, const std::string& expected)
     /* Capture the output in a string */
     std::string output = buffer.str();
     
+    /* Message à afficher */
     std::string message = "Pointer identification: Expected: " + (expected.empty() ? "NULL\n" : expected) + "Got: " + (output.empty() ? "NULL" : output);
+    
+    /* Print the expected and actual output */
     ASSERT_TEST(output == expected, message);
 }
 
@@ -87,6 +91,7 @@ void testIdentifyReference(Base& p, const std::string& expected)
     /* Redirection de std::cout vers le tampon de flux buffer */
     std::cout.rdbuf(buffer.rdbuf());
 
+    /* Appel de la fonction identify(Base& p) */
     identify(p);
 
     /* Restauration du tampon de flux d'origine de std::cout */
@@ -104,6 +109,7 @@ void testIdentifyReference(Base& p, const std::string& expected)
  */
 void testGenerateAndIdentify(int iteration)
 {
+    /* Génération d'un objet Base* */
     Base* p = generate();
     
     /* Création d'un objet ostringstream pour capturer la sortie */
@@ -121,6 +127,7 @@ void testGenerateAndIdentify(int iteration)
     /* Redirection de std::cout vers le tampon de flux expectedBuffer */
     std::cout.rdbuf(expectedBuffer.rdbuf());
     
+    /* Appel de la fonction identify(Base* p) */
     identify(p);
 
     /* Capture the output in a string */
@@ -141,6 +148,7 @@ void testGenerateAndIdentify(int iteration)
     /* Redirection de std::cout vers le tampon de flux pointerBuffer */
     std::cout.rdbuf(pointerBuffer.rdbuf());
     
+    /* Appel de la fonction identify(Base* p) */
     identify(p);
 
     /* Capture the output in a string */
@@ -162,6 +170,7 @@ void testGenerateAndIdentify(int iteration)
     /* Redirection de std::cout vers le tampon de flux referenceBuffer */
     std::cout.rdbuf(referenceBuffer.rdbuf());
     
+    /* Appel de la fonction identify(Base& p) */
     identify(*p);
 
     /* Capture the output in a string */
@@ -182,29 +191,36 @@ int main()
     /* Initialisation du générateur de nombres aléatoires une seule fois */
     std::srand(static_cast<unsigned int>(std::time(0)));
 
-    /* Test de génération et identification */
+    /* TESTING GENERATE AND IDENTIFY */
     std::cout << CYAN << "RUNNING GENERATE AND IDENTIFY TESTS..." << NC << std::endl;
+
     for (int i = 0; i < 10; ++i)
     {
         testGenerateAndIdentify(i);
     }
 
-    /* Test de tous les cas possibles pour identifier(Base*) */
+    /* TESTING IDENTIFY(Base*) */
     std::cout << CYAN << "\nTESTING IDENTIFY(Base*)..." << NC << std::endl;
+
+    /* Création d'objets de type A, B et C */
     A a;
     B b;
     C c;
+
+    /* Test de tous les cas possibles pour identifier(Base*) */
     testIdentifyPointer(&a, "A\n");
     testIdentifyPointer(&b, "B\n");
     testIdentifyPointer(&c, "C\n");
 
-    /* Test de tous les cas possibles pour identifier(Base&) */
+    /* TESTING IDENTIFY(Base&) */
     std::cout << CYAN << "\nTESTING IDENTIFY(Base&)..." << NC << std::endl;
+
+    /* Test de tous les cas possibles pour identifier(Base&) */
     testIdentifyReference(a, "A\n");
     testIdentifyReference(b, "B\n");
     testIdentifyReference(c, "C\n");
 
-    /* Test d'un pointeur nul */
+    /* TESTING IDENTIFY(NULL) */
     std::cout << CYAN << "\nTESTING IDENTIFY(NULL)..." << NC << std::endl;
     Base* nullPtr = NULL;
     testIdentifyPointer(nullPtr, "");
