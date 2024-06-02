@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 16:46:13 by raveriss          #+#    #+#             */
-/*   Updated: 2024/06/03 00:12:26 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/06/03 00:36:31 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void testIdentifyReference(Base& p, const std::string& expected)
     /* Capture the output in a string */
     std::string output = buffer.str();
     
+    /* Print the expected and actual output */
     ASSERT_TEST(output == expected, "Reference identification: Expected: " + expected + "Got: " + output);
 }
 
@@ -107,33 +108,69 @@ void testGenerateAndIdentify(int iteration)
     
     /* Création d'un objet ostringstream pour capturer la sortie */
     std::ostringstream expectedBuffer;
+
+    /* Affichage de l'itération actuelle */
     expectedBuffer << "\nIteration " << iteration << " - Generated object: ";
     
-    std::streambuf* rootCoutStream = std::cout.rdbuf(expectedBuffer.rdbuf());
+    /* Creation d'un pointeur rootCoutStream de type std::streambuf pour sauvegarder le tampon de flux courant de std::cout */
+    std::streambuf* rootCoutStream;
+    
+    /* Sauvegarde du tampon de flux courant de std::cout */
+    rootCoutStream = std::cout.rdbuf();
+    
+    /* Redirection de std::cout vers le tampon de flux expectedBuffer */
+    std::cout.rdbuf(expectedBuffer.rdbuf());
+    
     identify(p);
 
     /* Capture the output in a string */
     std::string expectedOutput = expectedBuffer.str();
+
+    /* Restauration du tampon de flux d'origine de std::cout */
     std::cout.rdbuf(rootCoutStream);
     
     /* Print the expected output for the current iteration */
     std::cout << expectedOutput;
 
-    /* Capture the output of identify(Base* p) */
+    /* Création d'un objet ostringstream pour capturer la sortie */
     std::ostringstream pointerBuffer;
-    rootCoutStream = std::cout.rdbuf(pointerBuffer.rdbuf());
+
+    /* Sauvegarde du tampon de flux courant de std::cout */
+    rootCoutStream = std::cout.rdbuf();
+
+    /* Redirection de std::cout vers le tampon de flux pointerBuffer */
+    std::cout.rdbuf(pointerBuffer.rdbuf());
+    
     identify(p);
+
+    /* Capture the output in a string */
     std::string pointerOutput = pointerBuffer.str();
+
+    /* Restauration du tampon de flux d'origine de std::cout */
     std::cout.rdbuf(rootCoutStream);
+
+    /* Print the expected and actual output */
     ASSERT_TEST(pointerOutput == expectedOutput.substr(expectedOutput.find(':') + 2), 
                 "Identify by pointer: Expected: " + expectedOutput.substr(expectedOutput.find(':') + 2) + "Got: " + pointerOutput);
 
     /* Capture the output of identify(Base& p) */
     std::ostringstream referenceBuffer;
-    rootCoutStream = std::cout.rdbuf(referenceBuffer.rdbuf());
+
+    /* Sauvegarde du tampon de flux courant de std::cout */
+    rootCoutStream = std::cout.rdbuf();
+
+    /* Redirection de std::cout vers le tampon de flux referenceBuffer */
+    std::cout.rdbuf(referenceBuffer.rdbuf());
+    
     identify(*p);
+
+    /* Capture the output in a string */
     std::string referenceOutput = referenceBuffer.str();
+
+    /* Restauration du tampon de flux d'origine de std::cout */
     std::cout.rdbuf(rootCoutStream);
+
+    /* Print the expected and actual output */
     ASSERT_TEST(referenceOutput == expectedOutput.substr(expectedOutput.find(':') + 2), 
                 "Identify by reference: Expected: " + expectedOutput.substr(expectedOutput.find(':') + 2) + "Got: " + referenceOutput);
 
@@ -142,7 +179,7 @@ void testGenerateAndIdentify(int iteration)
 
 int main()
 {
-    // Initialisation du générateur de nombres aléatoires une seule fois
+    /* Initialisation du générateur de nombres aléatoires une seule fois */
     std::srand(static_cast<unsigned int>(std::time(0)));
 
     /* Test de génération et identification */
