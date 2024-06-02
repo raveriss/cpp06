@@ -35,7 +35,6 @@ Implements a `Serializer` class with static methods `serialize` and `deserialize
 ### Exercise 02: Identify Real Type
 - **Directory:** `ex02/`
 - **Files to submit:**
-  - `cpp06_ex02.zip`
   - `incs/A.hpp`
   - `incs/Base.hpp`
   - `incs/B.hpp`
