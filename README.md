@@ -21,9 +21,13 @@ Introduces the `ScalarConverter` class, which contains a static method `convert`
 ### Exercise 01: Serialization
 - **Directory:** `ex01/`
 - **Files to submit:**
+  - `incs/Data.hpp`
+  - `incs/Serializer.hpp`
   - `Makefile`
-  - `main.cpp`
-  - Various class implementations (`*.cpp`, `*.h`, `*.hpp`)
+  - `srcs/Data.cpp`
+  - `srcs/main.cpp`
+  - `srcs/Serializer.cpp`
+
 
 #### Functionality
 Implements a `Serializer` class with static methods `serialize` and `deserialize`. The `serialize` method converts a pointer to an unsigned integer (`uintptr_t`), and the `deserialize` method converts it back to a pointer. The exercise includes creating a `Data` structure to test these methods.
