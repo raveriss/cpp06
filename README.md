@@ -35,9 +35,19 @@ Implements a `Serializer` class with static methods `serialize` and `deserialize
 ### Exercise 02: Identify Real Type
 - **Directory:** `ex02/`
 - **Files to submit:**
+  - `cpp06_ex02.zip`
+  - `incs/A.hpp`
+  - `incs/Base.hpp`
+  - `incs/B.hpp`
+  - `incs/C.hpp`
+  - `incs/generate.hpp`
+  - `incs/identify.hpp`
   - `Makefile`
-  - `main.cpp`
-  - Various class implementations (`*.cpp`, `*.h`, `*.hpp`)
+  - `srcs/Base.cpp`
+  - `srcs/generate.cpp`
+  - `srcs/identify.cpp`
+  - `srcs/main.cpp`
+
 
 #### Functionality
 Implements a `Base` class with a public virtual destructor and three derived classes (`A`, `B`, and `C`). The exercise includes functions to generate a random instance of `A`, `B`, or `C` and identify the real type of an object pointed to by a `Base` pointer or reference, without using the `typeinfo` header.
