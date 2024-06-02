@@ -6,15 +6,19 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 16:46:13 by raveriss          #+#    #+#             */
-/*   Updated: 2024/06/03 01:48:39 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/06/03 01:56:43 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* Inclusion des classes Base, A, B et C */
-#include "../incs/Base.hpp"
 #include "../incs/A.hpp"
 #include "../incs/B.hpp"
 #include "../incs/C.hpp"
+
+/* Inclusion de la classe Base */
+#include "../incs/Base.hpp"
+
+/* Inclusion des identifications et génération */
 #include "../incs/identify.hpp"
 #include "../incs/generate.hpp"
 
