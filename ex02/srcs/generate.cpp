@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 14:40:38 by raveriss          #+#    #+#             */
-/*   Updated: 2024/06/01 17:15:49 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/06/03 01:52:19 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@
 
 /* Inclusion de la bibliothèque standard pour std::rand, std::srand */
 #include <cstdlib>
-
-/* Inclusion de la bibliothèque standard pour std::time */
-#include <ctime>
 
 /**
  * @brief Génère un objet de type A, B ou C
