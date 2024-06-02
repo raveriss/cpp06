@@ -9,9 +9,11 @@ This module consists of a series of exercises that explore various aspects of ty
 ### Exercise 00: Conversion of Scalar Types
 - **Directory:** `ex00/`
 - **Files to submit:**
+  - `incs/ScalarConverter.hpp`
   - `Makefile`
-  - `main.cpp`
-  - Various class implementations (`*.cpp`, `*.h`, `*.hpp`)
+  - `srcs/main.cpp`
+  - `srcs/ScalarConverter.cpp`
+
 
 #### Functionality
 Introduces the `ScalarConverter` class, which contains a static method `convert`. This method takes a string representation of a C++ literal and outputs its value as `char`, `int`, `float`, and `double`. The class is non-instantiable and handles edge cases like non-displayable characters and pseudo literals.
