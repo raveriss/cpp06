@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 14:00:00 by raveriss          #+#    #+#             */
-/*   Updated: 2024/05/31 13:58:06 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/06/03 17:12:23 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void testPointerSerialization()
  */
 void testSerialization(const Data& original)
 {
-    std::size_t raw = Serializer::serialize(const_cast<Data*>(&original));
+    uintptr_t raw = Serializer::serialize(const_cast<Data*>(&original));
     Data* deserialized = Serializer::deserialize(raw);
 
     bool testPassed = (deserialized == &original) &&
