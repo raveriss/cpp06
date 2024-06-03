@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 16:46:13 by raveriss          #+#    #+#             */
-/*   Updated: 2024/06/03 01:56:43 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/06/03 02:31:00 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,6 +194,9 @@ void testGenerateAndIdentify(int iteration)
     delete p;
 }
 
+/**
+ * Fonction main
+ */
 int main()
 {
     /* Initialisation du générateur de nombres aléatoires une seule fois */
