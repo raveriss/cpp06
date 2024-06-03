@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:49:18 by raveriss          #+#    #+#             */
-/*   Updated: 2024/06/03 17:17:11 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/06/03 21:04:43 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  */
 uintptr_t Serializer::serialize(Data * ptr)
 {
-    return reinterpret_cast<std::size_t>(ptr);
+    return reinterpret_cast<uintptr_t>(ptr);
 }
 
 /**

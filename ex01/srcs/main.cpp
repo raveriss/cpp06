@@ -6,7 +6,7 @@
 /*   By: raveriss <raveriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 14:00:00 by raveriss          #+#    #+#             */
-/*   Updated: 2024/06/03 17:12:23 by raveriss         ###   ########.fr       */
+/*   Updated: 2024/06/03 21:03:30 by raveriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 /* Inclusion de la bibliothèque standard pour std::ostringstream */
 #include <sstream>
 
-/* Inclusion de la bibliothèque standard pour std::size_t */
+/* Inclusion de la bibliothèque standard pour uintptr_t  */
 #include <cstring>
 
 /* Inclusion de la bibliothèque standard pour INT_MAX, INT_MIN */
@@ -36,9 +36,9 @@
     else { std::cout << "\033[31m[TEST FAILED]\033[0m " << message << std::endl; }
 
 /** 
- * @brief Convertit std::size_t en std::string
+ * @brief Convertit uintptr_t  en std::string
  */
-std::string toString(std::size_t value)
+std::string toString(uintptr_t  value)
 {
     std::ostringstream oss;
     oss << value;
@@ -67,7 +67,7 @@ void testPointerSerialization()
     data1.name = "PointerTest";
 
     Data* dataPtr1 = &data1;
-    std::size_t raw = Serializer::serialize(dataPtr1);
+    uintptr_t  raw = Serializer::serialize(dataPtr1);
     Data* deserialized = Serializer::deserialize(raw);
 
     ASSERT_TEST(deserialized == dataPtr1, "Pointer equality test");
@@ -95,8 +95,8 @@ void testSerialization(const Data& original)
                       (deserialized->id == original.id) &&
                       (deserialized->name == original.name);
 
-    ASSERT_TEST(testPassed, "\nOriginal: " + toString(reinterpret_cast<std::size_t>(&original)) +
-                "\nDeserialized: " + toString(reinterpret_cast<std::size_t>(deserialized)) +
+    ASSERT_TEST(testPassed, "\nOriginal: " + toString(reinterpret_cast<uintptr_t >(&original)) +
+                "\nDeserialized: " + toString(reinterpret_cast<uintptr_t >(deserialized)) +
                 "\nID: " + toString(deserialized->id) +
                 "\nName: " + deserialized->name + "\n");
 }
@@ -112,7 +112,7 @@ int main()
     original.id = 42;
     original.name = "Test";
 
-    std::size_t raw = Serializer::serialize(&original);
+    uintptr_t  raw = Serializer::serialize(&original);
     Data* deserialized = Serializer::deserialize(raw);
 
     std::cout << "Original: " << &original << ", ID: " << original.id << ", Name: " << original.name << std::endl;
